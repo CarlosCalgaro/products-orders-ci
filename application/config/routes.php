@@ -54,12 +54,22 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 */
+$route['default_controller'] = 'products/index';
+$route['products/index'] = 'products/index';
+$route['products/view'] = 'products/view';
 
-$route['products/(:any)'] = 'products/view/$1';
-$route['products'] = 'products';
+$route['products/edit/(:any)'] = 'products/edit/$1';
 
-$route['(:any)'] = 'pages/view/$1';
-$route['default_controller'] = 'pages/view';
+$route['produts/(:any)'] = 'products/view/$1';
+
+$route['orders/'] = 'orders/index';
+$route['orders/index'] = 'orders/index';
+$route['orders/view'] = 'orders/view';
+$route['orders/create'] = 'orders/create';
+$route['orders/edit/(:any)'] = 'orders/edit/$1';
+
+$route['orders/(:any)'] = 'orders/view/$1';
+$route['(:any)'] = 'products/index';
 
 
 

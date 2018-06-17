@@ -1,0 +1,12 @@
+{
+    "products": {
+        "id" : "integer",
+        "name" : "text",
+        "description" : "descricao",
+        "price": "price"
+    },
+    "orders": {
+        "id": "integer",
+        "description": "descricao da ordem",
+    }
+}
