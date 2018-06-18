@@ -7,7 +7,9 @@
          $this->load->model('products_model');
          $this->load->helper('url_helper');
       }
-
+      /**
+       * Função que trata do index dos produtos "/products/index"
+       */
       public function index(){
         $data['title'] = 'Produtos';
         $data['products'] = $this->products_model->get_products();
@@ -16,6 +18,10 @@
         $this->load->view('templates/footer');
       }
 
+      /**
+       * Função que trata da view dos produtos "/products/view/$1"
+       */
+
       public function view($id = NULL){
         $data['products_item'] = $this->products_model->get_products($id);
         $data['title'] = "Visualizar Item";
@@ -23,6 +29,9 @@
         $this->load->view('products/view');
         $this->load->view('templates/footer');
       }
+        /**
+       * Função que trata da criação dos produtos "products/create"
+       */
 
       public function create(){
         $data['title'] = "Adicionar Produto";
@@ -41,6 +50,9 @@
             $this->load->view('products/success');
         }
       }
+      /**
+       * Função que trata da edição dos produtos "/products/edit/$1"
+       */
 
       public function edit(){
           $id = $this->uri->segment(3);
@@ -68,6 +80,9 @@
           }
       }
 
+      /**
+       * Função que trata da deleção dos produtos
+       */
 
       public function delete(){
           $id = $this->uri->segment(3);

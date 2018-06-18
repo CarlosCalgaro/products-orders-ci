@@ -9,6 +9,9 @@
          $this->load->helper('url_helper');
       }
 
+    /**
+     * Trata a página Index das ordens "/orders/index"
+     */
       public function index(){
         $data['title'] = 'Ordens';
         $data['orders'] = $this->orders_model->get_orders();
@@ -17,6 +20,9 @@
         $this->load->view('templates/footer');
       }
 
+    /**
+     * Trata a página view das ordens "/orders/view/$1"
+     */
       public function view($id = NULL){
         $data['orders_item'] = $this->orders_model->get_orders($id);
         $data['title'] = "Visualizar Ordem de ID:  ".$id;
@@ -25,7 +31,10 @@
         $this->load->view('orders/view');
         $this->load->view('templates/footer');
       }
-
+    
+      /**
+     * Trata da criação de uma nova ordem "/orders/create"
+     */
       public function create(){
         $data['title'] = "Adicionar Ordem";
         $data['products'] = $this->products_model->get_products();
@@ -45,7 +54,9 @@
             redirect( base_url() . 'index.php/orders/index');
         }
       }
-
+    /**
+     * Trata da edição de uma ordem "/orders/edit/$1"
+     */
       public function edit(){
           $id = $this->uri->segment(3);
           if (empty($id)){
@@ -74,7 +85,9 @@
           }
       }
 
-
+    /**
+     * Trata a deleção das ordens
+     */
       public function delete(){
           $id = $this->uri->segment(3);
           if (empty($id)){
@@ -84,7 +97,12 @@
           $this->orders_model->delete($id);        
           redirect( base_url() . 'index.php/orders/index');        
       }
-
+     
+    /**
+     * Retorna os  produtos relacionados à  uma nota (e a quantidade de cada produto)
+     * TODO: Juntar as funções productsIdFromOrder e productsFromOrder
+     * para redução de código
+     */
         private function productsFromOrder($id=NULL){
             if (empty($id)){
                 show_404();
@@ -97,7 +115,12 @@
             );
             return $query->result();
         }
-        
+        /**
+        * Retorna o ID dos produtos relacionados à  uma ordem
+        * 
+        * TODO: Juntar as funções productsIdFromOrder e productsFromOrder
+        * para redução de código
+        */
         private function productsIdFromOrder($id=NULL){
             if (empty($id)){
                 show_404();
