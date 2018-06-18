@@ -38,6 +38,8 @@
                <th>Nome do Produto</th>
                <th>Descrição do Produto</th>
                <th>Preço do Produto</th>
+               <th>Quantidade</th>
+               <th>Total</th>
             </tr>
          </thead>
                 <?php foreach ($products as $row): ?>
@@ -45,7 +47,9 @@
                         <tr>
                             <td><?php echo $row->name; ?></td>
                             <td><?php echo $row->description?></td>
-                            <td><?php echo $row->price ?></td>
+                            <td>R$ <?php echo $row->price ?></td>
+                            <td><?php echo $row->quantidade ?></td>
+                            <td>R$ <?php echo(floatval($row->quantidade) * floatval($row->price)) ?></td>
                         </tr>
                     </tbody>
                 <?php endforeach ?>

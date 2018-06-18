@@ -40,6 +40,7 @@
             $this->load->view('templates/footer');
         }else{
             $products_array = $this->input->post('products');
+            //print_r($quantities = $this->input->post('products_qtd[]'));
             $this->orders_model->insert();
             redirect( base_url() . 'index.php/orders/index');
         }
@@ -89,7 +90,7 @@
                 show_404();
             }
             $query = $this->db->query(
-                'SELECT pr.* FROM order_products as op 
+                'SELECT op.quantity "quantidade", pr.*  FROM order_products as op 
                 INNER JOIN products pr
                 ON pr.id = product_id
                 WHERE op.order_id ='.(string)$id

@@ -29,16 +29,22 @@
                 <label for="preco">Data da Ordem</label>
             </div>
         </div>
-        <div class="row">
             <?php foreach ($products as $products_item):?>
-                <p>
-                    <label>
-                        <?php echo form_checkbox('products[]', $products_item['id'], FALSE); ?>
-                        <span><?php echo($products_item['name'])?></span>
-                    </label>
-                </p>
+                <div class="row">
+                        <div class="input-field col s3">
+                            <p>
+                                <label>
+                                    <?php echo form_checkbox('products[]', $products_item['id'], FALSE); ?>
+                                    <span><?php echo($products_item['name'])?></span>
+                                </label>
+                            </p>
+                        </div>
+                        <div class="input-field col s3">
+                            <input name=<?php echo('products_qtd['.$products_item['id'].']')?> id="name" type="text" class="validate">
+                            <label for="">Quantidade</label>
+                        </div>
+                </div>
             <?php endforeach; ?>
-        </div>
         <div class="row">
             <div class="col s6"/>
                 <button class="btn waves-effect waves-light" type="submit" name="action">

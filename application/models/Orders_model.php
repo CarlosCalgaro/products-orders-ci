@@ -18,6 +18,7 @@ class Orders_model extends CI_Model {
     public function insert(){
         $this->load->helper('url');
         $products_array = $this->input->post('products');
+        $products_quantity = $this->input->post('products_qtd[]');
         $data = array(
             'description' => $this->input->post('description'),
             'code' => $this->input->post('code'),
@@ -26,7 +27,7 @@ class Orders_model extends CI_Model {
         $return_status = $this->db->insert('orders', $data);
         $new_order_id = $this->db->insert_id();
         foreach($products_array as $product_id){
-            Self::createOrderProduct($product_id, $new_order_id);
+            Self::createOrderProduct($product_id, $new_order_id, $products_quantity[$product_id]);
         }
         return $return_status;
     }
@@ -57,10 +58,11 @@ class Orders_model extends CI_Model {
         return $this->db->delete('orders');
     }
     
-    private function createOrderProduct($product_id, $order_id){
+    private function createOrderProduct($product_id, $order_id, $quantity){
         $data = array(
             'order_id' => $order_id,
-            'product_id' => $product_id
+            'product_id' => $product_id,
+            'quantity' => $quantity
         );
         return $this->db->insert('order_products', $data);
     }

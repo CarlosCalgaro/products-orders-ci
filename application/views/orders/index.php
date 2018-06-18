@@ -46,7 +46,7 @@
       <div class="row">
          <div class="col s6">
             <a class="waves-effect waves-light btn" href="<?php echo site_url('orders/create/');?>">
-               Criar novo Ordem
+               Criar nova Ordem
             </a>
          </div>
       </div>

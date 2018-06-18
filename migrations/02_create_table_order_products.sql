@@ -6,10 +6,11 @@
 */
 
 CREATE TABLE order_products (
-        id int(11) NOT NULL AUTO_INCREMENT,
+        -- id int(11) NOT NULL AUTO_INCREMENT,
         order_id int NOT NULL,
         product_id int NOT NULL,
-        PRIMARY KEY (id),
+        quantity int NOT NULL,
+        PRIMARY KEY (order_id, product_id),
         FOREIGN KEY (order_id) REFERENCES orders(id),
         FOREIGN KEY (product_id) REFERENCES products(id)
 );
