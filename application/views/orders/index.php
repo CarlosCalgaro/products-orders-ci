@@ -34,7 +34,7 @@
                      <td>
                         <a class="waves-effect waves-light btn red darken-3"
                            href="<?php echo site_url('orders/delete/'.$orders_item['id']); ?>" 
-                           onClick="return confirm('Are you sure you want to delete?')">
+                           onClick="return confirm('Tem certeza que deseja deletar este item?')">
                            Delete
                         </a>
                      </td>
